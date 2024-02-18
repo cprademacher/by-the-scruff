@@ -1,5 +1,17 @@
 import mongoose from "mongoose";
 
+let enu = {
+  values: [
+    "T-Shirts",
+    "Short Sleeve",
+    "Long Sleeve",
+    "Pants",
+    "Hats",
+    "Extras",
+  ],
+  message: "Please select correct category",
+};
+
 const productSchema = new mongoose.Schema(
   {
     name: {
@@ -35,17 +47,7 @@ const productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: [true, "Please enter product category"],
-      enum: {
-        value: [
-          "T-Shirts",
-          "Short Sleeve",
-          "Long Sleeve",
-          "Pants",
-          "Hats",
-          "Misc.",
-        ],
-        message: "Please select correct category",
-      },
+      enum: enu,
     },
     seller: {
       type: String,
@@ -62,7 +64,7 @@ const productSchema = new mongoose.Schema(
     reviews: [
       {
         user: {
-          type: mongoose.Schema.Types.objectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "User",
           required: true,
         },
@@ -77,9 +79,9 @@ const productSchema = new mongoose.Schema(
       },
     ],
     user: {
-      type: mongoose.Schema.Types.objectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }
