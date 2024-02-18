@@ -1,0 +1,22 @@
+{
+  "name": "driftwood_clothing_co",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "ECommerce website for the company, Driftwood Clothing Co.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "NODE_ENV=DEVELOPMENT nodemon server/app.js",
+    "prod": "NODE_ENV=PRODUCTION nodemon server/app.js"
+  },
+  "author": "Cody Rademacher",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.4",
+    "express": "4.18.2",
+    "mongoose": "8.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
