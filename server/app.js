@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 const app = express();
 import { connectDatabase } from "./config/dbConnect.js";
+import errorMiddleWare from "./middlewares/errors.js";
 
 dotenv.config({ path: "server/config/config.env" });
 
@@ -15,6 +16,9 @@ app.use(express.json());
 import productRoutes from "./routes/products.js";
 
 app.use("/api", productRoutes);
+
+// Use error middleware
+app.use(errorMiddleWare);
 
 app.listen(process.env.PORT, () => {
   console.log(
