@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 let enu = {
   values: [
     "T-Shirts",
-    "Short Sleeve",
-    "Long Sleeve",
+    "Short-Sleeve",
+    "Long-Sleeve",
     "Pants",
     "Hats",
     "Extras",
