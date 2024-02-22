@@ -174,3 +174,63 @@ export const udpateProfile = catchAsyncErrors(async (req, res, next) => {
     user,
   });
 });
+
+// Get all users - ADMIN => /api/admin/users
+export const allUsers = catchAsyncErrors(async (req, res, next) => {
+  const users = await User.find();
+
+  res.status(200).json({
+    users,
+  });
+});
+
+// Get user details - ADMIN => /api/admin/users/:id
+export const getUserDetails = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(
+      new ErrorHandler("User not found with id: ${req.params.id}", 404)
+    );
+  }
+
+  res.status(200).json({
+    user,
+  });
+});
+
+// Update User Details - ADMIN => /api/admin/users/:id
+export const updateUserDetails = catchAsyncErrors(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+
+  const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+    new: true,
+  });
+
+  res.status(200).json({
+    user,
+  });
+});
+
+// Delete User - ADMIN => /api/admin/users/:id
+export const deleteUser = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findByIdAndDelete(req.params.id);
+
+  if (!user) {
+    return next(
+      new ErrorHandler("User not found with id: ${req.params.id}", 404)
+    );
+  }
+
+  // TODO - Remove user avatar from cloudinary
+
+  await user.deleteOne();
+
+  res.status(200).json({
+    success: true,
+  });
+});
