@@ -78,3 +78,60 @@ export const deleteProduct = catchAsyncErrors(async (req, res) => {
     message: "Product Deleted",
   });
 });
+
+// Create/Update Product Review => /api/reviews
+export const createProductReview = catchAsyncErrors(async (req, res) => {
+  const { rating, comment, productId } = req.body;
+
+  const review = {
+    user: req?.user?._id,
+    rating: Number(rating),
+    comment,
+  };
+
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    return next(new ErrorHandler("Product Not Found", 404));
+  }
+
+  const isReviewed = product?.reviews?.find(
+    (r) => r.user.toString() === req?.user?._id.toString()
+  );
+
+  if (isReviewed) {
+    product?.reviews?.forEach((review) => {
+      if (review?.user?.toString() === req?.user?._id.toString()) {
+        review.comment = comment;
+        review.rating = rating;
+      }
+    });
+  } else {
+    product.reviews.push(review);
+    product.numOfReviews = product.reviews.length;
+  }
+
+  // Find the average rating from the reviews
+  product.ratings =
+    product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+    product.reviews.length;
+
+  await product.save({ validateBeforeSave: false });
+
+  res.status(200).json({
+    success: true,
+  });
+});
+
+// Get Product Reviews => /api/reviews
+export const getProductReviews = catchAsyncErrors(async (req, res, next) => {
+  const product = await Product.findById(req.query.id);
+
+  if (!product) {
+    return next(new ErrorHandler("Product Not Found", 404));
+  }
+
+  res.status(200).json({
+    reviews: product.reviews,
+  });
+});
