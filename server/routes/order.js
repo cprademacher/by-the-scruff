@@ -5,6 +5,7 @@ import {
   myOrders,
   getAllOrders,
   updateOrder,
+  deleteOrder,
 } from "../controllers/orderControllers.js";
 import { isAuthenticatedUser, authorizeRoles } from "../middlewares/auth.js";
 const router = express.Router();
@@ -19,6 +20,7 @@ router
 
 router
   .route("/admin/orders/:id")
-  .put(isAuthenticatedUser, authorizeRoles("admin"), updateOrder);
+  .put(isAuthenticatedUser, authorizeRoles("admin"), updateOrder)
+  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteOrder);
 
 export default router;
