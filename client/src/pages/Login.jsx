@@ -3,9 +3,9 @@ import MetaData from "../components/MetaData";
 export default function Cart() {
   return (
     <>
-      <MetaData title={"Shopping Cart"} />
+      <MetaData title={"Login"} />
       <div className="center">
-        <h1>Cart Page</h1>
+        <h1>Login Page</h1>
       </div>
     </>
   );
