@@ -1,15 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import MetaData from "../components/MetaData";
+import { useEffect } from "react";
 import ProductItem from "../components/product/ProductItem.jsx";
 import Loader from "../components/Loader.jsx";
+import toast from "react-hot-toast";
 import { useGetProductsQuery } from "../redux/api/productsApi.js";
 
 export default function Home2() {
-  const { data, isLoading, error } = useGetProductsQuery();
+  const { data, isLoading, error, isError } = useGetProductsQuery();
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error?.data?.message);
+    }
+  }, [isError]);
 
   console.log(data);
 
   if (isLoading) return <Loader />;
-  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>
