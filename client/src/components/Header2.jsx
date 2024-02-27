@@ -1,4 +1,4 @@
-import logo from "../images/shopit_logo.png";
+import logo from "../images/Driftwood_Wordmark_Tagline_1.png";
 import avatar from "../images/default_avatar.jpg";
 
 export default function Header2() {
@@ -7,7 +7,7 @@ export default function Header2() {
       <div className="col-12 col-md-3 ps-5">
         <div className="navbar-brand">
           <a href="/">
-            <img src={logo} alt="ShopIT Logo" />
+            <img className="w-75 p-3 center" src={logo} alt="Driftwood Logo" />
           </a>
         </div>
       </div>
