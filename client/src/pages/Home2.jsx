@@ -1,7 +1,15 @@
 import MetaData from "../components/MetaData";
-import productImage from "../images/default_product.png";
+import ProductItem from "../components/product/ProductItem.jsx";
+import { useGetProductsQuery } from "../redux/api/productsApi.js";
 
 export default function Home2() {
+  const { data, isLoading, error } = useGetProductsQuery();
+
+  console.log(data);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
     <>
       <MetaData title={"Home"} />
@@ -13,41 +21,9 @@ export default function Home2() {
 
           <section id="products" className="mt-5">
             <div className="row">
-              <div className="col-sm-12 col-md-6 col-lg-3 my-3">
-                <div className="card p-3 rounded">
-                  <img
-                    className="card-img-top mx-auto"
-                    src={productImage}
-                    alt="Product Image"
-                  />
-                  <div className="card-body ps-3 d-flex justify-content-center flex-column">
-                    <h5 className="card-title">
-                      <a href="/products/product">Product Name 1</a>
-                    </h5>
-                    <div className="ratings mt-auto d-flex">
-                      <div className="star-ratings">
-                        <i className="fa fa-star star-active"></i>
-                        <i className="fa fa-star star-active"></i>
-                        <i className="fa fa-star star-active"></i>
-                        <i className="fa fa-star star-active"></i>
-                        <i className="fa fa-star star-active"></i>
-                      </div>
-                      <span id="no_of_reviews" className="pt-2 ps-2">
-                        {" "}
-                        (0){" "}
-                      </span>
-                    </div>
-                    <p className="card-text mt-2">$100</p>
-                    <a
-                      href="/products/product"
-                      id="view_btn"
-                      className="btn btn-block"
-                    >
-                      View Details
-                    </a>
-                  </div>
-                </div>
-              </div>
+              {data?.products?.map((product) => (
+                <ProductItem key={product._id} product={product} />
+              ))}
             </div>
           </section>
         </div>
