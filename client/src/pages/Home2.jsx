@@ -1,5 +1,6 @@
 import MetaData from "../components/MetaData";
 import ProductItem from "../components/product/ProductItem.jsx";
+import Loader from "../components/Loader.jsx";
 import { useGetProductsQuery } from "../redux/api/productsApi.js";
 
 export default function Home2() {
@@ -7,7 +8,7 @@ export default function Home2() {
 
   console.log(data);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
