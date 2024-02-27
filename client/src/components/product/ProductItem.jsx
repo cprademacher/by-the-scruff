@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import StarRatings from "react-star-ratings";
+import defaultProductImage from "../../images/default_product.png";
 
 export default function ProductItem({ product }) {
   return (
@@ -8,7 +9,9 @@ export default function ProductItem({ product }) {
       <div className="card p-3 rounded">
         <img
           className="card-img-top mx-auto img-fluid"
-          src={product?.images[0]?.url}
+          src={
+            product?.images[0] ? product?.images[0]?.url : defaultProductImage
+          }
           alt={product?.name}
         />
         <div className="card-body ps-3 d-flex justify-content-center flex-column">
