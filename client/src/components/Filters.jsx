@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { getPriceQueryParams } from "../helpers/helpers";
 import PRODUCT_CATEGORIES from "../constants/constants.js";
+import StarRatings from "react-star-ratings";
 
 export default function Filters() {
   const [min, setMin] = useState(0);
@@ -122,30 +123,29 @@ export default function Filters() {
       <hr />
       <h5 className="mb-3">Ratings</h5>
 
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          name="ratings"
-          id="check7"
-          value="5"
-        />
-        <label className="form-check-label" htmlFor="check7">
-          <span className="star-rating">★ ★ ★ ★ ★</span>
-        </label>
-      </div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          name="ratings"
-          id="check8"
-          value="4"
-        />
-        <label className="form-check-label" htmlFor="check8">
-          <span className="star-rating">★ ★ ★ ★ ☆</span>
-        </label>
-      </div>
+      {[5, 4, 3, 2, 1].map((rating) => (
+        <div key={rating} className="form-check">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            name="ratings"
+            id="check7"
+            value={rating}
+            defaultChecked={defaultCheckHandler("ratings", rating.toString())}
+            onClick={(e) => handleClick(e.target)}
+          />
+          <label className="form-check-label" htmlFor="check7">
+            <StarRatings
+              rating={rating}
+              starRatedColor="#ffb829"
+              numberOfStars={5}
+              name="rating"
+              starDimension="21px"
+              starSpacing="1px"
+            />
+          </label>
+        </div>
+      ))}
     </div>
   );
 }
