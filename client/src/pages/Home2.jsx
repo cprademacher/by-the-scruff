@@ -16,11 +16,13 @@ export default function Home2() {
   const keyword = searchParams.get("keyword") || "";
   const min = searchParams.get("min");
   const max = searchParams.get("max");
+  const category = searchParams.get("category");
 
   const params = { page, keyword };
 
   min !== null && (params.min = min);
   max !== null && (params.max = max);
+  category !== null && (params.category = category);
 
   const { data, isLoading, error, isError } = useGetProductsQuery(params);
 
@@ -33,6 +35,8 @@ export default function Home2() {
   const columnSize = keyword ? 4 : 3;
 
   if (isLoading) return <Loader />;
+
+  let productSearch = data?.products?.length === 1 ? "product" : "products";
 
   return (
     <>
@@ -50,7 +54,7 @@ export default function Home2() {
         >
           <h1 id="products_heading" className="text-secondary">
             {keyword
-              ? `${data?.products?.length} Product(s) found with keyword: ${keyword}`
+              ? `${data?.products?.length} ${productSearch} found with keyword: ${keyword}`
               : "Latest Products"}
           </h1>
 

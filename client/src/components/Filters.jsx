@@ -1,6 +1,8 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { getPriceQueryParams } from "../helpers/helpers";
+import PRODUCT_CATEGORIES from "../constants/constants.js";
 
 export default function Filters() {
   const [min, setMin] = useState(0);
@@ -9,6 +11,49 @@ export default function Filters() {
   const navigate = useNavigate();
   let [searchParams] = useSearchParams();
 
+  useEffect(() => {
+    searchParams.has("min") && setMin(searchParams.get("min"));
+    searchParams.has("max") && setMax(searchParams.get("max"));
+  }, []);
+
+  // Handle category and ratings filter
+  const handleClick = (checkbox) => {
+    const checkboxes = document.getElementsByName(checkbox.name);
+
+    checkboxes.forEach((item) => {
+      if (item !== checkbox) {
+        item.checked = false;
+      }
+    });
+
+    if (checkbox.checked === false) {
+      // Delete category from query
+      if (searchParams.has(checkbox.name)) {
+        searchParams.delete(checkbox.name);
+        const path = window.location.pathname + "?" + searchParams.toString();
+        navigate(path);
+      }
+    } else {
+      // Set new filter value if already there
+      if (searchParams.has(checkbox.name)) {
+        searchParams.set(checkbox.name, checkbox.value);
+      } else {
+        // Append new filter value
+        searchParams.append(checkbox.name, checkbox.value);
+      }
+
+      const path = window.location.pathname + "?" + searchParams.toString();
+      navigate(path);
+    }
+  };
+
+  const defaultCheckHandler = (checkboxType, checkboxValue) => {
+    const value = searchParams.get(checkboxType);
+    if (checkboxValue === value) return true;
+    return false;
+  };
+
+  // Handle price filter
   const handleButtonClick = (e) => {
     e.preventDefault();
 
@@ -56,32 +101,23 @@ export default function Filters() {
       <hr />
       <h5 className="mb-3">Category</h5>
 
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          name="category"
-          id="check4"
-          value="Category 1"
-        />
-        <label className="form-check-label" htmlFor="check4">
-          {" "}
-          Category 1{" "}
-        </label>
-      </div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          name="category"
-          id="check5"
-          value="Category 2"
-        />
-        <label className="form-check-label" htmlFor="check5">
-          {" "}
-          Category 2{" "}
-        </label>
-      </div>
+      {PRODUCT_CATEGORIES?.map((category, index) => (
+        <div key={index} className="form-check">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            name="category"
+            id="check4"
+            value={category}
+            defaultChecked={defaultCheckHandler("category", category)}
+            onClick={(e) => handleClick(e.target)}
+          />
+          <label className="form-check-label" htmlFor="check4">
+            {" "}
+            {category}{" "}
+          </label>
+        </div>
+      ))}
 
       <hr />
       <h5 className="mb-3">Ratings</h5>
