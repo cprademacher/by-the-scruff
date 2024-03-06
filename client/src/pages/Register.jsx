@@ -1,10 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
+import { useNavigate } from "react-router-dom";
 import MetaData from "../components/MetaData";
 import { useRegisterMutation } from "../redux/api/authApi";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 export default function Register() {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -15,11 +20,17 @@ export default function Register() {
 
   const [register, { isLoading, error, data }] = useRegisterMutation();
 
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
   useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+
     if (error) {
       toast.error(error?.data?.message);
     }
-  }, [error]);
+  }, [error, isAuthenticated]);
 
   const submitHandler = (e) => {
     e.preventDefault();
