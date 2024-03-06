@@ -1,8 +1,13 @@
 import logo from "../images/Driftwood_Wordmark_Tagline_1.png";
 import avatar from "../images/default_avatar.jpg";
+import { useGetMeQuery } from "../redux/api/userApi";
 import Search from "./Search";
 
 export default function Header2() {
+  const { data } = useGetMeQuery();
+
+  console.log(data);
+
   return (
     <nav className="navbar row">
       <div className="col-12 col-md-3 ps-5">
