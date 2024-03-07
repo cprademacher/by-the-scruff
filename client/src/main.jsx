@@ -11,6 +11,9 @@ import Profile from "./pages/user/Profile.jsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
+import UpdateProfile from "./pages/user/UpdateProfile.jsx";
+import UploadAvatar from "./pages/user/UploadAvatar.jsx";
+import UpdatePassword from "./pages/user/UpdatePassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,18 @@ const router = createBrowserRouter([
       {
         path: "/me/profile",
         element: <Profile />,
+      },
+      {
+        path: "/me/update_profile",
+        element: <UpdateProfile />,
+      },
+      {
+        path: "/me/upload_avatar",
+        element: <UploadAvatar />,
+      },
+      {
+        path: "/me/update_password",
+        element: <UpdatePassword />,
       },
     ],
   },
