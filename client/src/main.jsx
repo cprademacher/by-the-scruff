@@ -8,6 +8,7 @@ import Cart from "./pages/Cart.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Profile from "./pages/user/Profile.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
@@ -47,19 +48,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/me/profile",
-        element: <Profile />,
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/me/update_profile",
-        element: <UpdateProfile />,
+        element: (
+          <ProtectedRoute>
+            <UpdateProfile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/me/upload_avatar",
-        element: <UploadAvatar />,
+        element: (
+          <ProtectedRoute>
+            <UploadAvatar />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/me/update_password",
-        element: <UpdatePassword />,
+        element: (
+          <ProtectedRoute>
+            <UpdatePassword />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
