@@ -1,5 +1,6 @@
 import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import User from "../models/User.js";
+import { upload_file } from "../utils/cloudinary.js";
 import { getResetPasswordTemplate } from "../utils/emailTemplates.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import sendEmail from "../utils/sendEmail.js";
@@ -54,6 +55,22 @@ export const logoutUser = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     message: "Logged Out",
+  });
+});
+
+// Upload user avatar => /api/me/upload_avatar
+export const uploadAvatar = catchAsyncErrors(async (req, res, next) => {
+  const avatarResponse = await upload_file(
+    req.body.avatar,
+    "Driftwood/avatars"
+  );
+
+  const user = await User.findByIdAndUpdate(req?.user?._id, {
+    avatar: avatar.response,
+  });
+
+  res.status(200).json({
+    user,
   });
 });
 

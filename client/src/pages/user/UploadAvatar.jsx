@@ -1,24 +1,74 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import UserLayout from "../UserLayout";
-import avatar from "../../images/default_avatar.jpg";
+import defaultAvatar from "../../images/default_avatar.jpg";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUploadAvatarMutation } from "../../redux/api/userApi";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 export default function UploadAvatar() {
+  const { user } = useSelector((state) => state.auth);
+  const [avatar, setAvatar] = useState("");
+  const [avatarPreview, setAvatarPreview] = useState(
+    user?.avatar ? user?.avatar?.url : defaultAvatar
+  );
+
+  const navigate = useNavigate();
+
+  const [uploadAvatar, { isLoading, error, isSuccess }] =
+    useUploadAvatarMutation();
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error?.data?.message);
+    }
+
+    if (isSuccess) {
+      toast.success("Avatar Uploaded Successfully!");
+      navigate("/me/profile");
+    }
+  }, [error, isSuccess]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const userData = {
+      avatar,
+    };
+
+    uploadAvatar(userData);
+  };
+
+  const onChange = (e) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setAvatarPreview(reader.result);
+        setAvatar(reader.result);
+      }
+    };
+
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
   return (
     <UserLayout>
       <div className="row wrapper">
         <div className="col-10 col-lg-8">
-          <form
-            className="shadow rounded bg-body"
-            action="#"
-            method="post"
-            encType="multipart/form-data"
-          >
+          <form className="shadow rounded bg-body" onSubmit={submitHandler}>
             <h2 className="mb-4">Upload Avatar</h2>
 
             <div className="mb-3">
               <div className="d-flex align-items-center">
                 <div className="me-3">
                   <figure className="avatar item-rtl">
-                    <img src={avatar} className="rounded-circle" alt="image" />
+                    <img
+                      src={avatarPreview}
+                      className="rounded-circle"
+                      alt="User Avatar"
+                    />
                   </figure>
                 </div>
                 <div className="input-foam">
@@ -31,6 +81,7 @@ export default function UploadAvatar() {
                     className="form-control"
                     id="customFile"
                     accept="images/*"
+                    onChange={onChange}
                   />
                 </div>
               </div>
@@ -40,9 +91,9 @@ export default function UploadAvatar() {
               id="register_button"
               type="submit"
               className="btn w-100 py-2"
-              disabled=""
+              disabled={isLoading}
             >
-              Upload
+              {isLoading ? "Uploading..." : "Upload"}
             </button>
           </form>
         </div>
