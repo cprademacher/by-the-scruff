@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import UserLayout from "../UserLayout";
 import defaultAvatar from "../../images/default_avatar.jpg";
@@ -21,6 +22,7 @@ export default function UploadAvatar() {
 
   useEffect(() => {
     if (error) {
+      console.log(error);
       toast.error(error?.data?.message);
     }
 
@@ -28,7 +30,7 @@ export default function UploadAvatar() {
       toast.success("Avatar Uploaded Successfully!");
       navigate("/me/profile");
     }
-  }, [error, isSuccess]);
+  }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();

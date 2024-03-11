@@ -66,7 +66,7 @@ export const uploadAvatar = catchAsyncErrors(async (req, res, next) => {
   );
 
   const user = await User.findByIdAndUpdate(req?.user?._id, {
-    avatar: avatar.response,
+    avatar: avatarResponse,
   });
 
   res.status(200).json({

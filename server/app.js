@@ -17,8 +17,12 @@ dotenv.config({ path: "server/config/config.env" });
 // Connecting to database
 connectDatabase();
 
-// Use express middleware to parse incoming data into json
-app.use(express.json());
+// Use express middleware to parse incoming data into json and increase the size express will allow
+app.use(
+  express.json({
+    limit: "50mb",
+  })
+);
 // Parses cookies for us to be able to access the token
 app.use(cookieParser());
 
