@@ -1,6 +1,6 @@
 import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import User from "../models/User.js";
-import { upload_file } from "../utils/cloudinary.js";
+import { upload_file, delete_file } from "../utils/cloudinary.js";
 import { getResetPasswordTemplate } from "../utils/emailTemplates.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import sendEmail from "../utils/sendEmail.js";
@@ -64,6 +64,11 @@ export const uploadAvatar = catchAsyncErrors(async (req, res, next) => {
     req.body.avatar,
     "Driftwood/avatars"
   );
+
+  // Remove previous avatar
+  if (req?.user?.avatar?.url) {
+    await delete_file(req?.user?.avatar?.public_id);
+  }
 
   const user = await User.findByIdAndUpdate(req?.user?._id, {
     avatar: avatarResponse,

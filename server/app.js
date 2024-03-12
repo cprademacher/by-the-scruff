@@ -17,10 +17,10 @@ dotenv.config({ path: "server/config/config.env" });
 // Connecting to database
 connectDatabase();
 
-// Use express middleware to parse incoming data into json and increase the size express will allow
+// Use express middleware to parse incoming data into json and increase the size express will allow to 10mb which is also the limit of cloudinary
 app.use(
   express.json({
-    limit: "50mb",
+    limit: "10mb",
   })
 );
 // Parses cookies for us to be able to access the token

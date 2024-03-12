@@ -22,7 +22,6 @@ export default function UploadAvatar() {
 
   useEffect(() => {
     if (error) {
-      console.log(error);
       toast.error(error?.data?.message);
     }
 
