@@ -1,11 +1,47 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import UserLayout from "../UserLayout";
+import { useUpdatePasswordMutation } from "../../redux/api/userApi";
+import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function UpdatePassword() {
+  const [oldPassword, setOldPassword] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [updatePassword, { isLoading, error, isSuccess }] =
+    useUpdatePasswordMutation();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error?.data?.message);
+    }
+
+    if (isSuccess) {
+      toast.success("Password Updated Successfully!");
+      navigate("/me/profile");
+    }
+  }, [error, isSuccess]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const userData = {
+      oldPassword,
+      password,
+    };
+
+    updatePassword(userData);
+  };
+
   return (
     <UserLayout>
       <div className="row wrapper">
         <div className="col-10 col-lg-8">
-          <form className="shadow rounded bg-body" action="#" method="post">
+          <form className="shadow rounded bg-body" onSubmit={submitHandler}>
             <h2 className="mb-4">Update Password</h2>
             <div className="mb-3">
               <label htmlFor="old_password_field" className="form-label">
@@ -15,7 +51,8 @@ export default function UpdatePassword() {
                 type="password"
                 id="old_password_field"
                 className="form-control"
-                value=""
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
               />
             </div>
 
@@ -27,12 +64,17 @@ export default function UpdatePassword() {
                 type="password"
                 id="new_password_field"
                 className="form-control"
-                value=""
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
-            <button type="submit" className="btn update-btn w-100">
-              Update Password
+            <button
+              type="submit"
+              className="btn update-btn w-100"
+              disabled={isLoading}
+            >
+              {isLoading ? "Updating..." : "Update Password"}
             </button>
           </form>
         </div>
