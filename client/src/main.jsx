@@ -16,6 +16,7 @@ import UpdateProfile from "./pages/user/UpdateProfile.jsx";
 import UploadAvatar from "./pages/user/UploadAvatar.jsx";
 import UpdatePassword from "./pages/user/UpdatePassword.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: "/password/forgot",
         element: <ForgotPassword />,
+      },
+      {
+        path: "/password/reset/:token",
+        element: <ResetPassword />,
       },
     ],
   },
