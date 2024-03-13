@@ -15,6 +15,7 @@ import store from "./redux/store.js";
 import UpdateProfile from "./pages/user/UpdateProfile.jsx";
 import UploadAvatar from "./pages/user/UploadAvatar.jsx";
 import UpdatePassword from "./pages/user/UpdatePassword.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
             <UpdatePassword />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/password/forgot",
+        element: <ForgotPassword />,
       },
     ],
   },
