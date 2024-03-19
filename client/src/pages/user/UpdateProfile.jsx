@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useUpdateProfileMutation } from "../../redux/api/userApi";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import MetaData from "../../components/MetaData";
 
 export default function UpdateProfile() {
   const navigate = useNavigate();
@@ -46,6 +47,7 @@ export default function UpdateProfile() {
 
   return (
     <UserLayout>
+      <MetaData title={"Update Profile"} />
       <div className="row wrapper">
         <div className="col-10 col-lg-8">
           <form className="shadow rounded bg-body" onSubmit={submitHandler}>
