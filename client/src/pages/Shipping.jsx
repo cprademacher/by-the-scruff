@@ -4,6 +4,7 @@ import { countries } from "countries-list";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingInfo } from "../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 export default function Shipping() {
   const countriesList = Object.values(countries);
@@ -38,6 +39,9 @@ export default function Shipping() {
   return (
     <>
       <MetaData title={"Shipping"} />
+
+      <CheckoutSteps shipping />
+
       <div className="row wrapper mb-5">
         <div className="col-10 col-lg-5">
           <form className="shadow rounded bg-body" onSubmit={submitHandler}>
