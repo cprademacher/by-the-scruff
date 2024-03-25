@@ -19,6 +19,7 @@ import ForgotPassword from "./pages/ForgotPassword.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import Shipping from "./pages/Shipping.jsx";
 import ConfirmOrder from "./pages/ConfirmOrder.jsx";
+import PaymentMethod from "./pages/PaymentMethod.jsx";
 
 const router = createBrowserRouter([
   {
@@ -103,6 +104,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <ConfirmOrder />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/payment_method",
+        element: (
+          <ProtectedRoute>
+            <PaymentMethod />
           </ProtectedRoute>
         ),
       },
