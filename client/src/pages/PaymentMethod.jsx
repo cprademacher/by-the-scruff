@@ -5,7 +5,10 @@ import CheckoutSteps from "../components/CheckoutSteps";
 import MetaData from "../components/MetaData";
 import { useSelector } from "react-redux";
 import { calculateOrderCost } from "../helpers/helpers";
-import { useCreateNewOrderMutation } from "../redux/api/orderApi";
+import {
+  useCreateNewOrderMutation,
+  useStripeCheckoutSessionMutation,
+} from "../redux/api/orderApi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +21,19 @@ export default function PaymentMethod() {
 
   const [createNewOrder, { isLoading, error, isSuccess }] =
     useCreateNewOrderMutation();
+
+  const [stripeCheckoutSession, { checkoutData, error: checkoutError }] =
+    useStripeCheckoutSessionMutation();
+
+  useEffect(() => {
+    if (checkoutData) {
+      navigate(checkoutData?.url);
+    }
+
+    if (checkoutError) {
+      toast.error(checkoutError?.data?.message);
+    }
+  }, [checkoutData, checkoutError]);
 
   useEffect(() => {
     if (error) {
@@ -56,7 +72,16 @@ export default function PaymentMethod() {
 
     if (method === "Card") {
       // Stripe checkout
-      alert("Card");
+      const orderData = {
+        shippingInfo,
+        orderItems: cartItems,
+        itemsPrice,
+        shippingAmount: shippingPrice,
+        taxAmount: taxPrice,
+        totalAmount: totalPrice,
+      };
+
+      stripeCheckoutSession(orderData);
     }
   };
 
