@@ -60,10 +60,10 @@ export default function Cart() {
 
           <div className="row d-flex justify-content-between">
             <div className="col-12 col-lg-8">
-              {cartItems?.map((item) => (
+              {cartItems?.map((item, index) => (
                 <>
                   <hr />
-                  <div className="cart-item" data-key="product1">
+                  <div className="cart-item" data-key="product1" key={index}>
                     <div className="row">
                       <div className="col-4 col-lg-3">
                         <img

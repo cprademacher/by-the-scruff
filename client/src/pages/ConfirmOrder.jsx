@@ -34,10 +34,10 @@ export default function ConfirmOrder() {
           <hr />
           <h4 className="mt-4">Your Cart Items:</h4>
 
-          {cartItems?.map((item) => (
+          {cartItems?.map((item, index) => (
             <>
               <hr />
-              <div className="cart-item my-1">
+              <div className="cart-item my-1" key={index}>
                 <div className="row">
                   <div className="col-4 col-lg-2">
                     <img

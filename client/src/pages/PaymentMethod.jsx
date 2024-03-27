@@ -8,7 +8,7 @@ import { calculateOrderCost } from "../helpers/helpers";
 import {
   useCreateNewOrderMutation,
   useStripeCheckoutSessionMutation,
-} from "../redux/api/orderApi";
+} from "../redux/api/orderApi.js";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -19,15 +19,16 @@ export default function PaymentMethod() {
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
 
-  const [createNewOrder, { isLoading, error, isSuccess }] =
-    useCreateNewOrderMutation();
+  const [createNewOrder, { error, isSuccess }] = useCreateNewOrderMutation();
 
-  const [stripeCheckoutSession, { checkoutData, error: checkoutError }] =
-    useStripeCheckoutSessionMutation();
+  const [
+    stripeCheckoutSession,
+    { data: checkoutData, error: checkoutError, isLoading },
+  ] = useStripeCheckoutSessionMutation();
 
   useEffect(() => {
     if (checkoutData) {
-      navigate(checkoutData?.url);
+      window.location.href = checkoutData?.url;
     }
 
     if (checkoutError) {
@@ -123,7 +124,12 @@ export default function PaymentMethod() {
               </label>
             </div>
 
-            <button id="shipping_btn" type="submit" className="btn py-2 w-100">
+            <button
+              id="shipping_btn"
+              type="submit"
+              className="btn py-2 w-100"
+              disabled={isLoading}
+            >
               {isLoading ? "Loading..." : "CONTINUE"}
             </button>
           </form>

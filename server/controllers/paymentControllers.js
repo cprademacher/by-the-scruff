@@ -18,7 +18,7 @@ export const stripeCheckoutSession = catchAsyncErrors(
           },
           unit_amount: item?.price * 100,
         },
-        tax_rates: ["txr_1Oyg51CXSr3r3jJe2WO7n07H"],
+        tax_rates: ["txr_1OyyzaCXSr3r3jJemGhvhh1X"],
         quantity: item?.quantity,
       };
     });
@@ -45,6 +45,8 @@ export const stripeCheckoutSession = catchAsyncErrors(
       ],
       line_items,
     });
+
+    console.log(session);
 
     res.status(200).json({
       url: session.url,
