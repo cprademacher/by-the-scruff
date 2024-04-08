@@ -20,6 +20,7 @@ import ResetPassword from "./pages/ResetPassword.jsx";
 import Shipping from "./pages/Shipping.jsx";
 import ConfirmOrder from "./pages/ConfirmOrder.jsx";
 import PaymentMethod from "./pages/PaymentMethod.jsx";
+import MyOrders from "./pages/order/MyOrders.jsx";
 
 const router = createBrowserRouter([
   {
@@ -112,6 +113,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <PaymentMethod />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "me/orders",
+        element: (
+          <ProtectedRoute>
+            <MyOrders />
           </ProtectedRoute>
         ),
       },
