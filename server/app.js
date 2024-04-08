@@ -21,6 +21,9 @@ connectDatabase();
 app.use(
   express.json({
     limit: "10mb",
+    verify: (req, res, buf) => {
+      req.rawBody = buf.toString();
+    },
   })
 );
 // Parses cookies for us to be able to access the token
