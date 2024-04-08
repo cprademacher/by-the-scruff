@@ -172,11 +172,11 @@ footer {
 }
 
 .redColor {
-  color: red;
+  color: red !important;
 }
 
 .greenColor {
-  color: green;
+  color: green !important;
 }
 
 #product_image {

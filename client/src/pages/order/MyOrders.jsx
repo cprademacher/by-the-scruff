@@ -1,18 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useMyOrdersQuery } from "../../redux/api/orderApi";
 import toast from "react-hot-toast";
 import Loader from "../../components/Loader.jsx";
 import { MDBDataTable } from "mdbreact";
+import MetaData from "../../components/MetaData.jsx";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/features/cartSlice.js";
 
 export default function MyOrders() {
   const { data, isLoading, error } = useMyOrdersQuery();
+
+  const [searchParams] = useSearchParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const orderSuccess = searchParams.get("order_success");
 
   useEffect(() => {
     if (error) {
       toast.error(error?.data?.message);
     }
-  }, [error]);
+
+    if (orderSuccess) {
+      dispatch(clearCart());
+      navigate("/me/orders");
+    }
+  }, [error, orderSuccess]);
 
   const setOrders = () => {
     const orders = {
@@ -75,6 +90,7 @@ export default function MyOrders() {
 
   return (
     <>
+      <MetaData title={"My Orders"} />
       <h1 className="my-5">{data?.orders?.length} Orders</h1>
 
       <MDBDataTable

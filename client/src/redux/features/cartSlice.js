@@ -38,6 +38,11 @@ export const cartSlice = createSlice({
 
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+    // eslint-disable-next-line no-unused-vars
+    clearCart: (state, action) => {
+      localStorage.removeItem("cartItems");
+      state.cartItems = [];
+    },
     saveShippingInfo: (state, action) => {
       state.shippingInfo = action.payload;
 
@@ -48,5 +53,5 @@ export const cartSlice = createSlice({
 
 export default cartSlice.reducer;
 
-export const { setCartItem, removeCartItem, saveShippingInfo } =
+export const { setCartItem, removeCartItem, clearCart, saveShippingInfo } =
   cartSlice.actions;
