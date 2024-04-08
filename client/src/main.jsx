@@ -22,6 +22,7 @@ import ConfirmOrder from "./pages/ConfirmOrder.jsx";
 import PaymentMethod from "./pages/PaymentMethod.jsx";
 import MyOrders from "./pages/order/MyOrders.jsx";
 import OrderDetails from "./pages/order/OrderDetails.jsx";
+import Invoice from "./pages/invoice/Invoice.jsx";
 
 const router = createBrowserRouter([
   {
@@ -130,6 +131,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <OrderDetails />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "invoice/order/:id",
+        element: (
+          <ProtectedRoute>
+            <Invoice />
           </ProtectedRoute>
         ),
       },
