@@ -1,4 +1,5 @@
 import Product from "../models/Product.js";
+import Order from "../models/Order.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import APIFilters from "../utils/apiFilters.js";
@@ -165,5 +166,21 @@ export const deleteProductReview = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({
     success: true,
     product,
+  });
+});
+
+// Can User Review => /api/can_review
+export const canUserReview = catchAsyncErrors(async (req, res) => {
+  const orders = await Order.find({
+    user: req.user._id,
+    "orderItems.product": req.query.productId,
+  });
+
+  if (orders.length === 0) {
+    return res.status(200).json({ canReview: false });
+  }
+
+  res.status(200).json({
+    canReview: true,
   });
 });

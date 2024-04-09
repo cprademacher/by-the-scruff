@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import MetaData from "../../components/MetaData";
 import StarRatings from "react-star-ratings";
-import { useSubmitReviewMutation } from "../../redux/api/productsApi";
+import {
+  useCanUserReviewQuery,
+  useSubmitReviewMutation,
+} from "../../redux/api/productsApi";
 import Loader from "../../components/Loader";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
@@ -13,6 +15,9 @@ export default function NewReview({ productId }) {
 
   const [submitReview, { isLoading, error, isSuccess }] =
     useSubmitReviewMutation();
+
+  const { data } = useCanUserReviewQuery(productId);
+  const canReview = data?.canReview;
 
   const submitHandler = () => {
     const reviewData = { rating, comment, productId };
@@ -33,18 +38,18 @@ export default function NewReview({ productId }) {
 
   return (
     <>
-      <MetaData title={"New Review"} />
-
       <div>
-        <button
-          id="review_btn"
-          type="button"
-          className="btn btn-primary mt-4"
-          data-bs-toggle="modal"
-          data-bs-target="#ratingModal"
-        >
-          Submit Your Review
-        </button>
+        {canReview && (
+          <button
+            id="review_btn"
+            type="button"
+            className="btn btn-primary mt-4"
+            data-bs-toggle="modal"
+            data-bs-target="#ratingModal"
+          >
+            Submit Your Review
+          </button>
+        )}
 
         <div className="row mt-2 mb-5">
           <div className="rating w-50">

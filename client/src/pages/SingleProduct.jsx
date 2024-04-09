@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCartItem } from "../redux/features/cartSlice.js";
 import MetaData from "../components/MetaData.jsx";
 import NewReview from "./reviews/NewReview.jsx";
+import ListReviews from "./reviews/ListReviews.jsx";
 
 export default function SingleProduct() {
   const params = useParams();
@@ -184,6 +185,9 @@ export default function SingleProduct() {
           </div>
         </div>
       </div>
+      {product?.reviews?.length > 0 && (
+        <ListReviews reviews={product?.reviews} />
+      )}
     </>
   );
 }
