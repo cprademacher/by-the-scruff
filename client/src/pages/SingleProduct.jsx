@@ -8,9 +8,10 @@ import toast from "react-hot-toast";
 import Loader from "../components/Loader.jsx";
 import StarRatings from "react-star-ratings";
 import defaultProductImage from "../images/default_product.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCartItem } from "../redux/features/cartSlice.js";
 import MetaData from "../components/MetaData.jsx";
+import NewReview from "./reviews/NewReview.jsx";
 
 export default function SingleProduct() {
   const params = useParams();
@@ -23,6 +24,7 @@ export default function SingleProduct() {
     params?.id
   );
   const product = data?.product;
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
     setActiveImage(
@@ -176,6 +178,7 @@ export default function SingleProduct() {
             Sold by: <strong>{product?.seller}</strong>
           </p>
 
+          {isAuthenticated ? <NewReview productId={product?._id} /> : null}
           <div className="alert alert-danger my-5" type="alert">
             Login to post your review.
           </div>
