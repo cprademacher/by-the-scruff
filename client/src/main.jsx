@@ -25,6 +25,7 @@ import OrderDetails from "./pages/order/OrderDetails.jsx";
 import Invoice from "./pages/invoice/Invoice.jsx";
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import ListProducts from "./pages/admin/ListProducts.jsx";
+import NewProduct from "./pages/admin/NewProduct.jsx";
 
 const router = createBrowserRouter([
   {
@@ -157,6 +158,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute admin={true}>
             <ListProducts />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/product/new",
+        element: (
+          <ProtectedRoute admin={true}>
+            <NewProduct />
           </ProtectedRoute>
         ),
       },
