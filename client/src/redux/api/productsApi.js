@@ -54,6 +54,7 @@ export const productApi = createApi({
           body,
         };
       },
+      invalidateTags: ["AdminProducts"],
     }),
   }),
 });
