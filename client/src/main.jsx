@@ -23,6 +23,7 @@ import PaymentMethod from "./pages/PaymentMethod.jsx";
 import MyOrders from "./pages/order/MyOrders.jsx";
 import OrderDetails from "./pages/order/OrderDetails.jsx";
 import Invoice from "./pages/invoice/Invoice.jsx";
+import Dashboard from "./pages/admin/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -119,7 +120,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "me/orders",
+        path: "/me/orders",
         element: (
           <ProtectedRoute>
             <MyOrders />
@@ -127,7 +128,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "me/order/:id",
+        path: "/me/order/:id",
         element: (
           <ProtectedRoute>
             <OrderDetails />
@@ -135,10 +136,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "invoice/order/:id",
+        path: "/invoice/order/:id",
         element: (
           <ProtectedRoute>
             <Invoice />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/dashboard",
+        element: (
+          <ProtectedRoute admin={true}>
+            <Dashboard />
           </ProtectedRoute>
         ),
       },
