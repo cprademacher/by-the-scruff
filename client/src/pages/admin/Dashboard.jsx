@@ -11,6 +11,11 @@ export default function Dashboard() {
   const [startDate, setStartDate] = useState(new Date().setDate(1));
   const [endDate, setEndDate] = useState(new Date());
 
+  const submitHandler = () => {
+    console.log(new Date(startDate).toISOString());
+    console.log(endDate.toISOString());
+  };
+
   return (
     <AdminLayout>
       <MetaData title={"Admin Dashboard"} />
@@ -38,7 +43,12 @@ export default function Dashboard() {
             className="form-control"
           />
         </div>
-        <button className="btn fetch-btn ms-4 mt-3 px-5">Fetch</button>
+        <button
+          className="btn fetch-btn ms-4 mt-3 px-5"
+          onClick={submitHandler}
+        >
+          Fetch
+        </button>
       </div>
 
       <div className="row pr-4 my-5">
