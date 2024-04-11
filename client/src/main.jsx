@@ -27,6 +27,7 @@ import Dashboard from "./pages/admin/Dashboard.jsx";
 import ListProducts from "./pages/admin/ListProducts.jsx";
 import NewProduct from "./pages/admin/NewProduct.jsx";
 import UpdateProduct from "./pages/admin/UpdateProduct.jsx";
+import UploadImages from "./pages/admin/UploadImages.jsx";
 
 const router = createBrowserRouter([
   {
@@ -175,6 +176,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute admin={true}>
             <UpdateProduct />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/products/:id/upload_images",
+        element: (
+          <ProtectedRoute admin={true}>
+            <UploadImages />
           </ProtectedRoute>
         ),
       },

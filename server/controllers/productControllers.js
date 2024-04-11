@@ -3,6 +3,7 @@ import Order from "../models/Order.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import APIFilters from "../utils/apiFilters.js";
+import { delete_file, upload_file } from "../utils/cloudinary.js";
 
 // Get all products => /api/products
 export const getProducts = catchAsyncErrors(async (req, res) => {
@@ -68,6 +69,50 @@ export const updateProduct = catchAsyncErrors(async (req, res) => {
   product = await Product.findByIdAndUpdate(req?.params?.id, req.body, {
     new: true,
   });
+
+  res.status(200).json({
+    product,
+  });
+});
+
+// Upload product images => /api/admin/products/:id/upload_images
+export const uploadProductImages = catchAsyncErrors(async (req, res) => {
+  let product = await Product.findById(req?.params?.id);
+
+  if (!product) {
+    return next(new ErrorHandler("Product Not Found", 404));
+  }
+
+  const uploader = async (image) => upload_file(image, "Driftwood/products");
+
+  const urls = await Promise.all((req?.body?.images).map(uploader));
+
+  product?.images?.push(...urls);
+
+  await product?.save();
+
+  res.status(200).json({
+    product,
+  });
+});
+
+// Delete product image => /api/admin/products/:id/delete_image
+export const deleteProductImage = catchAsyncErrors(async (req, res) => {
+  let product = await Product.findById(req?.params?.id);
+
+  if (!product) {
+    return next(new ErrorHandler("Product Not Found", 404));
+  }
+
+  const isDeleted = await delete_file(req.body.imgId);
+
+  if (isDeleted) {
+    product.images = product?.images?.filter(
+      (img) => img.public_id !== req.body.imgId
+    );
+
+    await product?.save();
+  }
 
   res.status(200).json({
     product,
