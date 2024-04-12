@@ -28,6 +28,7 @@ import ListProducts from "./pages/admin/ListProducts.jsx";
 import NewProduct from "./pages/admin/NewProduct.jsx";
 import UpdateProduct from "./pages/admin/UpdateProduct.jsx";
 import UploadImages from "./pages/admin/UploadImages.jsx";
+import ListOrders from "./pages/admin/ListOrders.jsx";
 
 const router = createBrowserRouter([
   {
@@ -184,6 +185,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute admin={true}>
             <UploadImages />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/orders",
+        element: (
+          <ProtectedRoute admin={true}>
+            <ListOrders />
           </ProtectedRoute>
         ),
       },
