@@ -1,21 +1,33 @@
 import { Link, useParams } from "react-router-dom";
 import MetaData from "../../components/MetaData";
-import { useOrderDetailsQuery } from "../../redux/api/orderApi.js";
+import AdminLayout from "../AdminLayout";
+import { toast } from "react-hot-toast";
 import Loader from "../../components/Loader.jsx";
+import { useOrderDetailsQuery } from "../../redux/api/orderApi.js";
 import { useEffect } from "react";
-import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
+import { useGetUserDetailsQuery } from "../../redux/api/userApi.js";
 
-export default function OrderDetails() {
+export default function ProcessOrder() {
   const params = useParams();
   const { data, isLoading, error } = useOrderDetailsQuery(params?.id);
-
   const order = data?.order || {};
 
-  const { user } = useSelector((state) => state.auth);
+  const {
+    shippingInfo,
+    orderItems,
+    paymentInfo,
+    user,
+    totalAmount,
+    orderStatus,
+  } = order;
 
-  const { shippingInfo, orderItems, paymentInfo, totalAmount, orderStatus } =
-    order;
+  const {
+    data: userData,
+    isLoading: isUserLoading,
+    error: userError,
+  } = useGetUserDetailsQuery(user, { skip: !user });
+
+  const { name } = userData?.user || {};
 
   const isPaid = paymentInfo?.status === "paid" ? true : false;
 
@@ -23,23 +35,21 @@ export default function OrderDetails() {
     if (error) {
       toast.error(error?.data?.message);
     }
-  }, [error]);
 
-  console.log("Order Details: ", order);
+    if (userError) {
+      toast.error(userError?.data?.message);
+    }
+  }, [error, userError]);
 
-  if (isLoading) return <Loader />;
+  if (isLoading || isUserLoading) return <Loader />;
 
   return (
-    <>
-      <MetaData title={"Order Details"} />
-      <div className="row d-flex justify-content-center">
-        <div className="col-12 col-lg-9 mt-5 order-details">
-          <div className="d-flex justify-content-between align-items-center">
-            <h3 className="mt-5 mb-4">Your Order Details</h3>
-            <Link className="btn btn-success" to="/invoice/order/order-id">
-              <i className="fa fa-print"></i> Invoice
-            </Link>
-          </div>
+    <AdminLayout>
+      <MetaData title={"Process Order"} />
+      <div className="row d-flex justify-content-around">
+        <div className="col-12 col-lg-8 order-details">
+          <h3 className="mt-5 mb-4">Order Details</h3>
+
           <table className="table table-striped table-bordered">
             <tbody>
               <tr>
@@ -47,7 +57,7 @@ export default function OrderDetails() {
                 <td>{order?._id}</td>
               </tr>
               <tr>
-                <th scope="row">Status</th>
+                <th scope="row">Order Status</th>
                 <td
                   className={
                     String(orderStatus).includes("Delivered")
@@ -58,10 +68,6 @@ export default function OrderDetails() {
                   <b>{orderStatus}</b>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">Date</th>
-                <td>{new Date(order?.createdAt).toLocaleString("en-US")}</td>
-              </tr>
             </tbody>
           </table>
 
@@ -70,7 +76,7 @@ export default function OrderDetails() {
             <tbody>
               <tr>
                 <th scope="row">Name</th>
-                <td>{user?.name}</td>
+                <td>{name}</td>
               </tr>
               <tr>
                 <th scope="row">Phone No</th>
@@ -141,7 +147,29 @@ export default function OrderDetails() {
           </div>
           <hr />
         </div>
+
+        <div className="col-12 col-lg-3 mt-5">
+          <h4 className="my-4">Status</h4>
+
+          <div className="mb-3">
+            <select className="form-select" name="status" value="">
+              <option value="Processing">Processing</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+          </div>
+
+          <button className="btn btn-primary w-100">Update Status</button>
+
+          <h4 className="mt-5 mb-3">Order Invoice</h4>
+          <Link
+            to={`/invoice/order/${order?._id}`}
+            className="btn btn-success w-100"
+          >
+            <i className="fa fa-print"></i> Generate Invoice
+          </Link>
+        </div>
       </div>
-    </>
+    </AdminLayout>
   );
 }

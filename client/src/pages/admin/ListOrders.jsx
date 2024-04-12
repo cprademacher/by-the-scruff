@@ -66,7 +66,7 @@ export default function ListOrders() {
         actions: (
           <>
             <Link
-              to={`/admin/products/${order?._id}`}
+              to={`/admin/orders/${order?._id}`}
               className="btn btn-outline-primary"
             >
               <i className="fa fa-pencil"></i>

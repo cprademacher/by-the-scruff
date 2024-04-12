@@ -212,7 +212,7 @@ export const getUserDetails = catchAsyncErrors(async (req, res, next) => {
 
   if (!user) {
     return next(
-      new ErrorHandler("User not found with id: ${req.params.id}", 404)
+      new ErrorHandler(`User not found with id: ${req.params.id}`, 404)
     );
   }
 

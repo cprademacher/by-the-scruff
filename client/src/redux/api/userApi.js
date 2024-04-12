@@ -27,6 +27,10 @@ export const userApi = createApi({
       },
       providesTags: ["User"],
     }),
+    getUserDetails: builder.query({
+      query: (id) => `admin/users/${id}`,
+      providesTags: (result, error, id) => [{ type: "User", id }],
+    }),
     updateProfile: builder.mutation({
       query(body) {
         return {
@@ -79,6 +83,7 @@ export const userApi = createApi({
 
 export const {
   useGetMeQuery,
+  useGetUserDetailsQuery,
   useUpdateProfileMutation,
   useUploadAvatarMutation,
   useUpdatePasswordMutation,

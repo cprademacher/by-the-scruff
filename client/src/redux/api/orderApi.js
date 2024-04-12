@@ -36,6 +36,15 @@ export const orderApi = createApi({
     getAdminOrders: builder.query({
       query: () => "/admin/orders",
     }),
+    updateOrder: builder.mutation({
+      query({ id, body }) {
+        return {
+          url: `/admin/orders/${id}`,
+          method: "PUT",
+          body,
+        };
+      },
+    }),
   }),
 });
 
@@ -46,4 +55,5 @@ export const {
   useOrderDetailsQuery,
   useLazyGetDashboardSalesQuery,
   useGetAdminOrdersQuery,
+  useUpdateOrderMutation,
 } = orderApi;
