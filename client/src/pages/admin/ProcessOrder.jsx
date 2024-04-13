@@ -3,14 +3,22 @@ import MetaData from "../../components/MetaData";
 import AdminLayout from "../AdminLayout";
 import { toast } from "react-hot-toast";
 import Loader from "../../components/Loader.jsx";
-import { useOrderDetailsQuery } from "../../redux/api/orderApi.js";
-import { useEffect } from "react";
+import {
+  useOrderDetailsQuery,
+  useUpdateOrderMutation,
+} from "../../redux/api/orderApi.js";
+import { useEffect, useState } from "react";
 import { useGetUserDetailsQuery } from "../../redux/api/userApi.js";
 
 export default function ProcessOrder() {
   const params = useParams();
   const { data, isLoading, error } = useOrderDetailsQuery(params?.id);
   const order = data?.order || {};
+
+  const [status, setStatus] = useState("");
+
+  const [updateOrder, { error: updateError, isSuccess: isUpdateSuccess }] =
+    useUpdateOrderMutation();
 
   const {
     shippingInfo,
@@ -32,6 +40,12 @@ export default function ProcessOrder() {
   const isPaid = paymentInfo?.status === "paid" ? true : false;
 
   useEffect(() => {
+    if (orderStatus) {
+      setStatus(orderStatus);
+    }
+  }, [orderStatus]);
+
+  useEffect(() => {
     if (error) {
       toast.error(error?.data?.message);
     }
@@ -39,7 +53,20 @@ export default function ProcessOrder() {
     if (userError) {
       toast.error(userError?.data?.message);
     }
-  }, [error, userError]);
+
+    if (updateError) {
+      toast.error(updateError?.data?.message);
+    }
+
+    if (isUpdateSuccess) {
+      toast.success("Order Updated");
+    }
+  }, [error, userError, updateError, isUpdateSuccess]);
+
+  const updateOrderHandler = (id) => {
+    const data = { status };
+    updateOrder({ id, body: data });
+  };
 
   if (isLoading || isUserLoading) return <Loader />;
 
@@ -152,18 +179,29 @@ export default function ProcessOrder() {
           <h4 className="my-4">Status</h4>
 
           <div className="mb-3">
-            <select className="form-select" name="status" value="">
+            <select
+              className="form-select"
+              name="status"
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            >
               <option value="Processing">Processing</option>
               <option value="Shipped">Shipped</option>
               <option value="Delivered">Delivered</option>
             </select>
           </div>
 
-          <button className="btn btn-primary w-100">Update Status</button>
+          <button
+            className="btn btn-primary w-100"
+            onClick={() => updateOrderHandler(order?._id)}
+          >
+            Update Status
+          </button>
 
           <h4 className="mt-5 mb-3">Order Invoice</h4>
           <Link
             to={`/invoice/order/${order?._id}`}
+            target="_blank"
             className="btn btn-success w-100"
           >
             <i className="fa fa-print"></i> Generate Invoice

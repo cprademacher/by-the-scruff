@@ -88,15 +88,24 @@ export const updateOrder = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("You have already delivered this order", 400));
   }
 
+  let productNotFound = false;
+
   // Update product's stock once orderStatus is either delivered or shipped (up to you)
-  order?.orderItems?.forEach(async (item) => {
+  for (const item of order.orderItems) {
     const product = await Product.findById(item?.product?.toString());
     if (!product) {
-      return next(new ErrorHandler("No product found with this id.", 404));
+      productNotFound = true;
+      break;
     }
     product.stock = product.stock - item.quantity;
     await product.save({ validateBeforeSave: false });
-  });
+  }
+
+  if (productNotFound) {
+    return next(
+      new ErrorHandler("No product found with one or more IDs.", 404)
+    );
+  }
 
   //   Set order status to that which has been passed into the body
   order.orderStatus = req.body.status;
