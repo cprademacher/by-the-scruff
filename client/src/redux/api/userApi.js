@@ -9,7 +9,7 @@ import {
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
-  tagTypes: ["User"],
+  tagTypes: ["User", "AdminUsers", "AdminUser"],
   endpoints: (builder) => ({
     getMe: builder.query({
       query: () => "/me",
@@ -78,6 +78,19 @@ export const userApi = createApi({
         };
       },
     }),
+    updateUser: builder.mutation({
+      query({ id, body }) {
+        return {
+          url: `admin/users/${id}`,
+          method: "PUT",
+          body,
+        };
+      },
+    }),
+    getAdminUsers: builder.query({
+      query: () => "/admin/users",
+      providesTags: ["AdminUsers"],
+    }),
   }),
 });
 
@@ -89,4 +102,6 @@ export const {
   useUpdatePasswordMutation,
   useForgotPasswordMutation,
   useResetPasswordMutation,
+  useGetAdminUsersQuery,
+  useUpdateUserMutation,
 } = userApi;

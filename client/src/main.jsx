@@ -30,6 +30,8 @@ import UpdateProduct from "./pages/admin/UpdateProduct.jsx";
 import UploadImages from "./pages/admin/UploadImages.jsx";
 import ListOrders from "./pages/admin/ListOrders.jsx";
 import ProcessOrder from "./pages/admin/ProcessOrder.jsx";
+import ListUsers from "./pages/admin/ListUsers.jsx";
+import UpdateUser from "./pages/admin/UpdateUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -202,6 +204,22 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute admin={true}>
             <ProcessOrder />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/users",
+        element: (
+          <ProtectedRoute admin={true}>
+            <ListUsers />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/users/:id",
+        element: (
+          <ProtectedRoute admin={true}>
+            <UpdateUser />
           </ProtectedRoute>
         ),
       },
