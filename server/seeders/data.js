@@ -1,220 +1,93 @@
 export default [
   {
-    name: "SanDisk Ultra 128GB SDXC UHS-I Memory Card up to 80MB/s",
-    price: 45.89,
+    name: "Tote Bag with Zipper Close in Iconic Ralph Lauren Polo Bears & Cork Bottom",
+    price: 49.75,
     description:
-      "Ultra-fast cards (2) to take better pictures and Full HD videos (1) with your compact to mid-range point-and-shoot cameras and camcorders. With SanDisk Ultra SDXC UHS-I cards you’ll benefit from faster downloads, high capacity, and better performance to capture and store 128GB (5) of high quality pictures and Full HD video (1). Take advantage of ultra-fast read speeds of up to 80MB/s (3) to save time moving photos and videos from the card to your computer. From a leader in flash memory storage, SanDisk Ultra SDXC UHS-I cards are compatible with SDHC and SDXC digital devices, and come with a 10-year limited warranty (6).",
-    ratings: 4.5,
-    images: [
-      {
-        public_id: "shopit/demo/nkkjkta63uiazppzkmjf",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/nkkjkta63uiazppzkmjf.jpg",
-      },
-      {
-        public_id: "shopit/demo/hz1iwdqzrvxtfxincvju",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/hz1iwdqzrvxtfxincvju.jpg",
-      },
-      {
-        public_id: "shopit/demo/oc2dvvkxyxukc13y9pjv",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/oc2dvvkxyxukc13y9pjv.jpg",
-      },
-    ],
-    category: "T-Shirts",
-    seller: "Ebay",
+      "Our best seller with a new look! This zippered tote bag does it all and features the iconic Ralph Lauren Polo Bear fabric. Our generously sized tote is fully lined and the top zipper assures your items will remain inside the tote. The inside pocket is made from the Ralph Lauren bear fabric for an extra pop. The Ralph Lauren fabric and navy lining are 100% cotton. The boxy bottom features natural cork fabric that adds support to the tote.",
+
+    category: "Tote Bags & Fanny Packs",
     stock: 50,
-    numOfReviews: 32,
     reviews: [],
   },
   {
-    name: "CAN USB FD Adapter (GC-CAN-USB-FD)",
-    price: 315,
+    name: "Medium Mountain Theme Tote Bag For Travel and Everyday",
+    price: 23.75,
     description:
-      "Monitor a CAN network, write a CAN program and communicate with industrial, medical, automotive or other CAN based device. Connect CAN FD and CAN networks to a computer via USB with the CAN USB FD adapter.",
-    ratings: 1.65,
-    images: [
-      {
-        public_id: "shopit/demo/e3hweb3tbp5zacfi564c",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/e3hweb3tbp5zacfi564c.jpg",
-      },
-      {
-        public_id: "shopit/demo/mjcc0kg0lzxegrauh8qc",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/mjcc0kg0lzxegrauh8qc.jpg",
-      },
-      {
-        public_id: "shopit/demo/iruzmpgrhb6xyqheppxg",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/iruzmpgrhb6xyqheppxg.jpg",
-      },
-      {
-        public_id: "shopit/demo/bj3auijqcxxvkwdohznb",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577510/shopit/demo/bj3auijqcxxvkwdohznb.jpg",
-      },
-    ],
-    category: "Short-Sleeve",
-    seller: "Amazon",
-    stock: 0,
-    numOfReviews: 2,
+      "This mountain statement tote is perfect for the avid traveler and everyday use. It is open at the top allowing easy access to all your items. We fell in love with this mountain fabric and framing it in cork makes it pop. There are 2 inside pockets to separate a few of your personal items, each half the width of the tote. The outside fabric and the turquoise lining are both made from 100% cotton. The boxy bottom and sides feature natural cork fabric that adds support (and whimsy) to the tote.",
+    category: "Tote Bags & Fanny Packs",
+    stock: 50,
     reviews: [],
   },
   {
-    name: "CHARMOUNT Full Motion TV Wall Mount Swivel",
-    price: 26.99,
+    name: "Custom Dog bandana -LIMITED EDITION Ralph Lauren Bears / Polo / Easy Tie / Bandana for dog / Pet Gifts / Dog Clothes / Dog Accessories",
+    price: 18.99,
     description:
-      "CHARMOUNT TV MOUNT UNIVERSAL DESIGN - Has your TV been received? Tilted TV wall mount is for 26 - 55 TVs weight up to 88lbs 40 kg. Our tilt TV mount has a compatible faceplate that fits VESA 75X75mm (3x3). CHARMOUNT TV MOUNT UNIVERSAL DESIGN - Has your TV been received? Tilted TV wall mount is for 26 - 55 TVs weight up to 88lbs 40 kg. Our tilt TV mount has a compatible faceplate that fits VESA 75X75mm (3x3) CHARMOUNT TV MOUNT UNIVERSAL DESIGN - Has your TV been received? Tilted TV wall mount is for 26 - 55 TVs weight up to 88lbs 40 kg. Our tilt TV mount has a compatible faceplate that fits VESA 75X75mm (3x3).",
-    ratings: 3.5,
-    images: [
-      {
-        public_id: "shopit/demo/yqqwxrgst2pi3frtngaw",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577531/shopit/demo/yqqwxrgst2pi3frtngaw.jpg",
-      },
-      {
-        public_id: "shopit/demo/pgcwny8xyshsnwaiikbm",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577531/shopit/demo/pgcwny8xyshsnwaiikbm.jpg",
-      },
-    ],
-    category: "Long-Sleeve",
-    seller: "Amazon",
-    stock: 1,
-    numOfReviews: 12,
+      "LIMITED EDITION: Made with the iconic Ralph Lauren Polo Bear fabric, this dog bandana has an easy tie design.  It's back! Now with the traditional, vintage blue and white stripes.  A new bandana design to take your pup’s style to the next level. Our dog bandanas with contrasting cuff color of your choice are designed with extended ties for a better, sharper fit.",
+    category: "Dog Bandanas",
+    stock: 50,
     reviews: [],
   },
   {
-    name: "Bose QuietComfort 35 II Wireless Bluetooth Headphones",
-    price: 299,
+    name: "Dog bandana - Navy and White - ROBOTS!",
+    price: 15.99,
     description:
-      "What happens when you clear away the noisy distractions of the world? Concentration goes to the next level. You get deeper into your music, your work, or whatever you want to focus on. That’s the power of Bose QuietComfort 35 wireless headphones II. Put them on and get closer to what you’re most passionate about. And that’s just the beginning. QuietComfort 35 wireless headphones II are now enabled with Bose AR",
-    ratings: 4.5,
-    images: [
-      {
-        public_id: "shopit/demo/yxbrklp7snr7dgxfrxu9",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577543/shopit/demo/yxbrklp7snr7dgxfrxu9.jpg",
-      },
-      {
-        public_id: "shopit/demo/i8ge1ilin2fz9tk2okni",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577543/shopit/demo/i8ge1ilin2fz9tk2okni.jpg",
-      },
-    ],
-    category: "Pants",
-    seller: "Amazon",
-    stock: 11,
-    numOfReviews: 112,
+      "Is your furry friend ready to stand out from the pack? Introducing our latest must-have accessory for your canine companion: the Reversible Navy and White Robot Pattern Dog Bandana! It features white robots on a navy background with a navy and white swirls cuff and reverse side.  Take your pup’s style to the next level. Our dog bandanas with a cuff are designed with extended ties for a better, sharper fit.",
+    category: "Dog Bandanas",
+    stock: 50,
     reviews: [],
   },
   {
-    name: "Apple AirPods with Charging Case (Wired)",
-    price: 126.99,
+    name: "Handmade w/ Ralph Lauren Polo Bears Iconic Fabric Travel Baby Wipe and Diaper Pouch/Holder",
+    price: 34.99,
     description:
-      "AirPods with Charging Case: More than 24 hours listening time, up to 18 hours talk time; AirPods (single charge): Up to 5 hours listening time, up to 3 hours talk time or 15 minutes in the case equals up to 3 hours listening time or up to 2 hours talk time.",
-    ratings: 4.8,
-    images: [
-      {
-        public_id: "shopit/demo/yj00oalanbzmbzctsbln",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577557/shopit/demo/yj00oalanbzmbzctsbln.jpg",
-      },
-      {
-        public_id: "shopit/demo/mijzcdd5sle8a2any1i8",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577557/shopit/demo/mijzcdd5sle8a2any1i8.jpg",
-      },
-      {
-        public_id: "shopit/demo/kxckb0o7fbdwqgmugoct",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577557/shopit/demo/kxckb0o7fbdwqgmugoct.jpg",
-      },
-    ],
-    category: "Hats",
-    seller: "Amazon",
-    stock: 122,
-    numOfReviews: 2671,
+      "Iconic vintage Ralph Lauren Polo Bears* fabric made into a travel-size diaper and baby wipe holder pouch made to keep your diaper bag organized or easy, lightweight go-with-you-anywhere storage. One side of the pouch holds the wipes, the other side of the case will hold a few diapers**. Choose between oval opening or circular opening to pull out wipes without taking out the container. Velcro closure makes for quick and easy access during messy situations.",
+    category: "Baby Wipe/Diaper Pouch",
+    stock: 50,
     reviews: [],
   },
   {
-    name: "Cable Boom Microphone - Volume Control for Playstation PS4 or Xbox",
-    price: 27.99,
+    name: "Llama Gender Neutral Travel Baby Wipe and Diaper Pouch/Holder - yellow and white",
+    price: 29.75,
     description:
-      "DESIGN INFO - 3.5mm male to 2.5mm male audio cable adapter with Upgraded Flexible, Detachable Boom Mic which also enables rotary Volume Control and Mute Switch. SteelFlex Arm for perfect microphone positioning. INPUT COMPATIBILITY - Devices supporting 3.5mm audio output such as gaming PS4 / Xbox One controller, PC, Laptop, iPhone and Android Phone.",
-    ratings: 4.1,
-    images: [
-      {
-        public_id: "shopit/demo/xmndneguqtrcutpf9wcz",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577572/shopit/demo/xmndneguqtrcutpf9wcz.jpg",
-      },
-    ],
-    category: "Extras",
-    seller: "Amazon",
-    stock: 1123,
-    numOfReviews: 6,
+      "The llama travel size diaper and baby wipe holder pouch is perfect for the ready-to-go parent. Llama fabric is cotton, and the white lining is 100% linen. One side of the pouch holds the wipes, the other side of the case will hold a few diapers*. The oval opening allows for pulling out wipes without taking out the container. Throw this in a diaper bag or your purse, or attach to your stroller.",
+    category: "Baby Wipe/Diaper Pouch",
+    stock: 50,
     reviews: [],
   },
   {
-    name: "Nikon D3500 W/ AF-P DX NIKKOR 18-55mm f/3.5-5.6G VR Black",
-    price: 496.95,
+    name: "White Satin Bow Tie, wedding and special occasions with double loops",
+    price: 9.75,
     description:
-      "You don't need to be a photographer to know a great photo when you see one. And you don't need to be a photographer to take a great photo—you just need the D3500. It's as easy to use as a point-and-shoot, but it takes beautiful DSLR photos and videos that get noticed. It feels outstanding in your hands, sturdy and balanced with controls where you want them. It's compact, durable and versatile, ideal for travel. And it works seamlessly with compatible smartphones, making it easier than ever to share your great photos. Even if you've never picked up a DSLR camera, you can take beautiful pictures with D3500.",
-    ratings: 4.7,
-    images: [
-      {
-        public_id: "shopit/demo/q6ybe84qlkzwet9qwptz",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/q6ybe84qlkzwet9qwptz.jpg",
-      },
-      {
-        public_id: "shopit/demo/niqqio1faynnscubkkmd",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/niqqio1faynnscubkkmd.jpg",
-      },
-      {
-        public_id: "shopit/demo/dy3nhjgsdgqcnrwf8u2h",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/dy3nhjgsdgqcnrwf8u2h.jpg",
-      },
-    ],
-    category: "Long-Sleeve",
-    seller: "Amazon",
-    stock: 131,
-    numOfReviews: 222,
+      "These white satin bow tie are the perfect pet accessory for special occasions! Double loops (two loops on each side) for the most attractive bow tie. Our handmade bowties include two elastic bands on the back for easy attachment. Slip-on and slip-off most collar widths. No floppy bows! The added stabilizer reinforces the bow to retain shape so your pup always looks their best.  Wear the bow in the front for the traditional, dapper look or on the back of your pet's neck for an adorable, playful style.",
+    category: "Bow Ties",
+    stock: 50,
     reviews: [],
   },
   {
-    name: "Apple MacBook Air (13-inch, 8GB RAM, 256GB SSD Storage) - Space Gray",
-    price: 949.99,
+    name: "Black Velvet Dog Bow Tie with double loops. Perfect for weddings, holiday parties and family photos.",
+    price: 9.75,
     description:
-      "Stunning 13.3-inch Retina display with True Tone technology, Backlit Magic Keyboard and Touch ID, Tenth-generation, Intel Core i3 processor, Intel Iris Plus Graphics, Fast SSD storage, 8GB of memory, Stereo speakers with wider stereo sound",
-    ratings: 4.9,
-    images: [
-      {
-        public_id: "shopit/demo/jzqaj98nnhy0hcsilx9y",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577597/shopit/demo/jzqaj98nnhy0hcsilx9y.jpg",
-      },
-      {
-        public_id: "shopit/demo/welkq4dgfi5267usmj0n",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577597/shopit/demo/welkq4dgfi5267usmj0n.jpg",
-      },
-      {
-        public_id: "shopit/demo/pabtjloyzenmr6z8klcr",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577600/shopit/demo/pabtjloyzenmr6z8klcr.jpg",
-      },
-    ],
-    category: "Extras",
-    seller: "Amazon",
-    stock: 0,
-    numOfReviews: 56,
+      "These black velvet bow tie are the perfect pet accessory for special occasions! Double loops (two loops on each side) for the most attractive bow tie. Our handmade bowties include two elastic bands on the back for easy attachment. Slip-on and slip-off most collar widths. No floppy bows! The added stabilizer reinforces the bow to retain shape so your pup always looks their best.  Wear the bow in the front for the traditional, dapper look or on the back of your pet's neck for an adorable, playful style.",
+    category: "Bow Ties",
+    stock: 50,
     reviews: [],
   },
   {
-    name: "Kauffman Orchards Homegrown McIntosh Apples",
-    price: 2.75,
+    name: "Zippered Small Bag/Pouch in Iconic Ralph Lauren Fabric",
+    price: 14.75,
     description:
-      "McIntosh is a pretty red/green apple with white flesh Homegrown in Kauffman's orchard in healthy Lancaster County soil McIntosh apples are famous for snacking, pies, salads, and applesauce Protected with soft, high-density foam for safe shipping to your door Not for sale to California, Oregon, or Washington due to state laws governing fresh produce",
-    ratings: 5,
-    images: [
-      {
-        public_id: "shopit/demo/mq0zpyzmzqokphs9m9we",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577619/shopit/demo/mq0zpyzmzqokphs9m9we.jpg",
-      },
-      {
-        public_id: "shopit/demo/pkyy8rifxpesiwpy23kk",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577619/shopit/demo/pkyy8rifxpesiwpy23kk.jpg",
-      },
-    ],
-    category: "T-Shirts",
-    seller: "Kauffman's Fruit Farm & Market",
-    stock: 500,
-    numOfReviews: 1,
+      "This zipper bag does it all and features the iconic, vintage Ralph Lauren fabric.  Our zippered cotton pouches are fully lined with red cotton fabric and large enough for personal items such as dog treats, keys, money, credit cards, make-up...etc. Even fits most cell phones!  Attach the pouch to your purse, backpack, belt, your dog's leash, or more with the metal spring clip.",
+    category: "Pouches",
+    stock: 50,
+    reviews: [],
+  },
+  {
+    name: "Classic Upcycled Plaid Tartan Nova Fabric Zippered Pouch",
+    price: 29.75,
+    description:
+      "We're upcycling this classic plaid tartan fabric into a mutli-use zipper pouch bag large enough for personal items such as keys, cell phone, money, wallet, a couple diapers, make-up...etc. This iconic pattern is the traditional tan background with black, white and cranberry stripes and fully lined in tan.",
+    category: "Pouches",
+    stock: 50,
     reviews: [],
   },
 ];
