@@ -6,35 +6,38 @@ import Loader from "../../components/Loader.jsx";
 import { MDBDataTable } from "mdbreact";
 import MetaData from "../../components/MetaData.jsx";
 import AdminLayout from "../AdminLayout.jsx";
-import { useGetAdminUsersQuery } from "../../redux/api/userApi.js";
+import {
+  useDeleteUserMutation,
+  useGetAdminUsersQuery,
+} from "../../redux/api/userApi.js";
 
 export default function ListUsers() {
   const { data, isLoading, error } = useGetAdminUsersQuery();
 
-  //   const [
-  //     deleteOrder,
-  //     { error: deleteError, isSuccess, isLoading: isDeleteLoading },
-  //   ] = useDeleteOrderMutation();
+  const [
+    deleteUser,
+    { error: deleteError, isLoading: isDeleteLoading, isSuccess },
+  ] = useDeleteUserMutation();
 
   useEffect(() => {
     if (error) {
       toast.error(error?.data?.message);
     }
 
-    // if (deleteError) {
-    //   console.log(deleteError);
-    //   toast.error(deleteError?.data?.message);
-    // }
+    if (deleteError) {
+      console.log(deleteError);
+      toast.error(deleteError?.data?.message);
+    }
 
-    // if (isSuccess) {
-    //   toast.success("Product Deleted");
-    // }
-  }, [error]);
+    if (isSuccess) {
+      toast.success("User Deleted");
+    }
+  }, [error, deleteError, isSuccess]);
 
-  //   const deleteOrderHandler = (id) => {
-  //     console.log("Deleting user with ID: ", id);
-  //     deleteOrder(id);
-  //   };
+  const deleteUserHandler = (id) => {
+    console.log("Deleting user with ID: ", id);
+    deleteUser(id);
+  };
 
   const setUsers = () => {
     const users = {
@@ -85,8 +88,8 @@ export default function ListUsers() {
 
             <button
               className="btn btn-outline-danger ms-2"
-              //   onClick={() => deleteOrderHandler(order?._id)}
-              //   disabled={isDeleteLoading}
+              onClick={() => deleteUserHandler(user?._id)}
+              disabled={isDeleteLoading}
             >
               <i className="fa fa-trash"></i>
             </button>

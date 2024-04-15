@@ -32,6 +32,7 @@ import ListOrders from "./pages/admin/ListOrders.jsx";
 import ProcessOrder from "./pages/admin/ProcessOrder.jsx";
 import ListUsers from "./pages/admin/ListUsers.jsx";
 import UpdateUser from "./pages/admin/UpdateUser.jsx";
+import ProductReviews from "./pages/admin/ProductReviews.jsx";
 
 const router = createBrowserRouter([
   {
@@ -220,6 +221,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute admin={true}>
             <UpdateUser />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/reviews",
+        element: (
+          <ProtectedRoute admin={true}>
+            <ProductReviews />
           </ProtectedRoute>
         ),
       },

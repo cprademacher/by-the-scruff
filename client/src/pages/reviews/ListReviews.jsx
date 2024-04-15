@@ -1,12 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
-import { useSelector } from "react-redux";
 import defaultAvatar from "../../images/default_avatar.jpg";
 import StarRatings from "react-star-ratings";
 
 export default function ListReviews({ reviews }) {
-  const { user } = useSelector((state) => state.auth);
-
   return (
     <>
       <div className="reviews w-75">
@@ -17,7 +14,11 @@ export default function ListReviews({ reviews }) {
             <div className="row">
               <div className="col-1">
                 <img
-                  src={user?.avatar ? user?.avatar?.url : defaultAvatar}
+                  src={
+                    review?.user?.avatar
+                      ? review?.user?.avatar?.url
+                      : defaultAvatar
+                  }
                   alt="User Name"
                   width="50"
                   height="50"
@@ -33,7 +34,7 @@ export default function ListReviews({ reviews }) {
                   starDimension="22px"
                   starSpacing="1px"
                 />
-                <p className="review_user">by {user?.name}</p>
+                <p className="review_user">by {review?.user?.name}</p>
                 <p className="review_comment">{review?.comment}</p>
               </div>
             </div>

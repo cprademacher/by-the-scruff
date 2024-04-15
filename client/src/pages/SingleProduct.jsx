@@ -180,9 +180,11 @@ export default function SingleProduct() {
           </p>
 
           {isAuthenticated ? <NewReview productId={product?._id} /> : null}
-          <div className="alert alert-danger my-5" type="alert">
-            Login to post your review.
-          </div>
+          {!isAuthenticated ? (
+            <div className="alert alert-danger my-5" type="alert">
+              Login to post your review.
+            </div>
+          ) : null}
         </div>
       </div>
       {product?.reviews?.length > 0 && (

@@ -30,7 +30,7 @@ export default function AdminLayout({ children }) {
     },
     {
       name: "Reviews",
-      url: "/admin/Reviews",
+      url: "/admin/reviews",
       icon: "fas fa-star",
     },
   ];
