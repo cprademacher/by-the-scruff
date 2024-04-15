@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../images/Driftwood_Wordmark_Tagline_1.png";
+import logo from "../images/Logo.jpg";
 import avatar from "../images/default_avatar.jpg";
 import { useGetMeQuery } from "../redux/api/userApi";
 import Search from "./Search";
@@ -26,7 +26,11 @@ export default function Header2() {
       <div className="col-12 col-md-3 ps-5">
         <div className="navbar-brand">
           <Link to="/">
-            <img className="w-75 p-3 center" src={logo} alt="Driftwood Logo" />
+            <img
+              className="w-25 p-3 center"
+              src={logo}
+              alt="ByTheScruff Logo"
+            />
           </Link>
         </div>
       </div>

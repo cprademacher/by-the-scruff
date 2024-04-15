@@ -61,17 +61,15 @@ export default function Invoice() {
             </div>
             <h1>INVOICE #{order?._id}</h1>
             <div id="company" className="clearfix">
-              <div>Driftwood Clothing Co.</div>
+              <div>ByTheScruff</div>
               <div>
-                330 Purple Heart Dr,
+                Address
                 <br />
-                TX 78610, US
+                Austin, TX 78746
               </div>
-              <div>(512) 461-2129</div>
+              <div>(512) 459-2222</div>
               <div>
-                <a href="mailto:info@driftwoodclothes.com">
-                  info@driftwoodclothes.com
-                </a>
+                <a href="mailto:info@bythescruff.com">info@bythescruff.com</a>
               </div>
             </div>
             <div id="project">
