@@ -24,7 +24,7 @@ export default function Header2() {
   return (
     <nav className="navbar row">
       <div className="col-12 col-md-3 ps-5">
-        <div className="navbar-brand">
+        <div className="navbar-brand" style={{ margin: "0 auto" }}>
           <Link to="/">
             <img
               className="w-25 p-3 center"
@@ -38,6 +38,9 @@ export default function Header2() {
         <Search />
       </div>
       <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
+        <Link to="/products" style={{ textDecoration: "none", color: "white" }}>
+          All Products
+        </Link>
         <Link to="/cart" style={{ textDecoration: "none" }}>
           <span id="cart" className="ms-3">
             {" "}

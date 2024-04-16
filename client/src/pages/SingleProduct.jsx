@@ -13,6 +13,7 @@ import { setCartItem } from "../redux/features/cartSlice.js";
 import MetaData from "../components/MetaData.jsx";
 import NewReview from "./reviews/NewReview.jsx";
 import ListReviews from "./reviews/ListReviews.jsx";
+import NotFound from "./NotFound.jsx";
 
 export default function SingleProduct() {
   const params = useParams();
@@ -76,6 +77,10 @@ export default function SingleProduct() {
   };
 
   if (isLoading) return <Loader />;
+
+  if (error && error?.status == 404) {
+    return <NotFound />;
+  }
 
   return (
     <>
@@ -175,9 +180,6 @@ export default function SingleProduct() {
           <h4 className="mt-2">Description:</h4>
           <p>{product?.description}</p>
           <hr />
-          <p id="product_seller mb-3">
-            Sold by: <strong>{product?.seller}</strong>
-          </p>
 
           {isAuthenticated ? <NewReview productId={product?._id} /> : null}
           {!isAuthenticated ? (

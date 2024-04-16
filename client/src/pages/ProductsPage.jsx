@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import MetaData from "../components/MetaData";
 import { useEffect } from "react";
@@ -44,20 +45,13 @@ export default function ProductsPage() {
     <>
       <MetaData title={"Products"} />
       <div className="row">
-        {keyword && (
-          <div className="col-6 col-md-3 mt-5">
-            <Filters />
-          </div>
-        )}
-        <div
-          className={
-            keyword ? "col-12 col-sm-6 col-md-9" : "col-12 col-sm-6 col-md-12"
-          }
-        >
+        <div className="col-6 col-md-3 mt-5">
+          <Filters />
+        </div>
+
+        <div className="col-12 col-sm-6 col-md-9">
           <h1 id="products_heading" className="text-secondary">
-            {keyword
-              ? `${data?.products?.length} ${productSearch} found with keyword: ${keyword}`
-              : "Latest Products"}
+            Products
           </h1>
 
           <section id="products" className="mt-5">

@@ -1,10 +1,12 @@
 const PRODUCT_CATEGORIES = [
-  "T-Shirts",
-  "Short-Sleeve",
-  "Long-Sleeve",
-  "Pants",
-  "Hats",
-  "Extras",
+  "Pouches",
+  "Bow Ties",
+  "Baby Wipe/Diaper Pouch",
+  "Stockings",
+  "Dog Bandanas",
+  "Tote Bags & Fanny Packs",
+  "Baby Bibs",
+  "Baby Gift Sets",
 ];
 
 export default PRODUCT_CATEGORIES;

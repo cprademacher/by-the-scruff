@@ -33,12 +33,13 @@ import ProcessOrder from "./pages/admin/ProcessOrder.jsx";
 import ListUsers from "./pages/admin/ListUsers.jsx";
 import UpdateUser from "./pages/admin/UpdateUser.jsx";
 import ProductReviews from "./pages/admin/ProductReviews.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <h1 className="display-2">Wrong Page!</h1>,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
